@@ -1,0 +1,34 @@
+<h3 class="page_heading">Sign up!</h3>
+<hr>
+
+{% if messages %}
+    <div class="error">
+        <p>The following error(s) occurred:</p>
+        <ul>
+            {% for foo in messages %}
+                {{ foo }}
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+<form method="post" action="{% url "sampleapp:signup" %}">
+
+    {% csrf_token %}
+    <table class="form_table">
+        {% for field in signup_form %}
+            <tr>
+                <td>{{ field.label_tag }}</td>
+                <td>{{ field }}</td>
+                <td>
+                    {% for err in field.errors %}
+                        <p>{{ err }}</p>
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+            type="submit">Sign up</button>
+</form>

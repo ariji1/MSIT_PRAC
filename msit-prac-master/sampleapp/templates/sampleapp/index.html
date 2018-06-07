@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+    Welcome || Ting
+{% endblock %}
+
+{% block tab_bar %}
+    <!-- Tabs -->
+    <div class = "mdl-layout__tab-bar mdl-js-ripple-effect">
+        <a id="signup-tab-link" href="#signup-tab" class="mdl-layout__tab is-active">Sign up</a>
+        <a id="signin-tab-link" href="#signin-tab" class="mdl-layout__tab">Sign in</a>
+        <a id="tryit-tab-link" href="#tryit-tab" class="mdl-layout__tab">Give it a try!</a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <main class="mdl-layout__content">
+
+        <!-- Sign up tab -->
+        <section class = "mdl-layout__tab-panel is-active" id = "signup-tab">
+            <div class = "page-content box_div">
+                <!-- Sign up -->
+                {% load static %}
+                {% include "sampleapp/signup.html" %}
+            </div>
+        </section>
+
+        <!-- Sign in tab -->
+        <section class = "mdl-layout__tab-panel" id = "signin-tab">
+            <div class = "page-content box_div">
+                <!-- Sign in -->
+                {% load static %}
+                {% include "sampleapp/signin.html" %}
+            </div>
+        </section>
+
+        <!-- Try it out tab -->
+        <section class = "mdl-layout__tab-panel" id = "tryit-tab">
+            <div class = "page-content box_div">
+                Try it out placeholder
+            </div>
+        </section>
+
+    </main>
+{% endblock %}
+
+{% if redirect_from %}
+    {% block custom_js %}
+        <script>
+            let redirectFrom = "{{ redirect_from }}";
+        </script>
+    {% endblock %}
+{% endif %}

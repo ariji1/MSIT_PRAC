@@ -1,0 +1,29 @@
+<h5 class="piece_heading">Online users</h5>
+<div class="online_users_div side_by_side">
+    <div id="global_chat_card" class="online_user_card">
+        <a href="{% url 'sampleapp:chat' u='all' %}">
+            {% load static %}
+            <img class="link_image profile_pic"
+                 src="{% static 'images/blank_profile_picture_small.png' %}"
+                 alt="Global chat">
+            <p class="online_user_text">Global Chat</p>
+        </a>
+    </div>
+
+    {% for user in online_users %}
+        <div class="online_user_card side_by_side">
+            <a href="{% url 'sampleapp:chat' u=user.id %}">
+                {% load static %}
+                <img class="link_image profile_pic"
+                     src="{% static 'images/blank_profile_picture_small.png' %}"
+                     alt="{{ user.username }}">
+                {% if user.first_name and user.first_name.strip and user.last_name and user.last_name.strip %}
+                    <p class="online_user_text">{{ user.first_name }} {{ user.last_name }}</p>
+                {% else %}
+                    <p class="online_user_text">{{ user.username }}</p>
+                {% endif %}
+
+            </a>
+        </div>
+    {% endfor %}
+</div>

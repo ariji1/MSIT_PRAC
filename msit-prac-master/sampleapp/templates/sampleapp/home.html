@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+    Home || Ting
+{% endblock %}
+
+{% block tab_bar %}
+    <!-- Tabs -->
+    <div class = "mdl-layout__tab-bar mdl-js-ripple-effect">
+        <a href="#home-tab" class="mdl-layout__tab is-active">Home</a>
+        <a href="#profile-tab" class="mdl-layout__tab">Profile</a>
+        <a href="#history-tab" class="mdl-layout__tab">History</a>
+        <a href="#change-pwd-tab" class="mdl-layout__tab">Change Password</a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <main class="mdl-layout__content">
+
+        <!-- Home tab -->
+        <section class = "mdl-layout__tab-panel is-active" id = "home-tab">
+            <div class = "page-content box_div">
+                <!-- Home -->
+                {% load static %}
+                {% include "sampleapp/online_users.html" %}
+                <hr>
+
+                <div class="custom_row side_by_side">
+                    <div class="custom_col">
+                        <h5 class="piece_heading">Your conversations</h5>
+                        {% for name, link in my_conversations %}
+                            <div class="one_conversation">
+                                <form action="{% url 'sampleapp:chat' u=link %}">
+                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect"
+                                        type="submit">{{ name }}</button>
+                                </form>
+{#                                <a href="{% url 'sampleapp:chat' u=link %}">{{ name }}</a>#}
+                            </div>
+                            <br>
+                        {% endfor %}
+
+                    </div>
+{#                    <div class="custom_col right">#}
+{#                        SoundCloud placeholder.#}
+{#                    </div>#}
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile tab -->
+        <section class = "mdl-layout__tab-panel" id = "profile-tab">
+            <div class = "page-content box_div">
+                <!-- Profile -->
+                {% load static %}
+                {% include "sampleapp/profile.html" %}
+            </div>
+        </section>
+
+        <!-- History tab -->
+        <section class = "mdl-layout__tab-panel" id = "history-tab">
+            <div class = "page-content box_div">
+                History placeholder
+            </div>
+        </section>
+
+        <!-- Change password tab -->
+        <section class = "mdl-layout__tab-panel" id = "change-pwd-tab">
+            <div class = "page-content box_div">
+                {% load static %}
+                {% include "sampleapp/change_pwd.html" %}
+            </div>
+        </section>
+
+    </main>
+{% endblock %}

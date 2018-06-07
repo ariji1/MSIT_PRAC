@@ -1,0 +1,54 @@
+<h3 class="page_heading">Log in</h3>
+<hr>
+
+{% if signin_error %}
+    <div class="error">
+        {{ signin_error }}
+    </div>
+{% endif %}
+
+<form method="post" action="{% url 'sampleapp:login' %}">
+    <input type="hidden" id="current_page" value="signin">
+
+    {% csrf_token %}
+    <table class="form_table">
+        <tr>
+            <td><label for="username">Username</label></td>
+            <td>
+                <input id="username"
+                       type="text"
+                       name="username"
+                       placeholder="Username"
+                       {% if signin_username %}
+                       value="{{ signin_username }}"
+                       {% endif %}>
+            </td>
+        </tr>
+
+        <tr>
+            <td><label for="pwd">Password</label></td>
+            <td>
+                <input id="pwd" type="password" name="pwd" placeholder="Password">
+            </td>
+        </tr>
+    </table>
+    <br>
+
+{#                    <input type="hidden" name="next" value="{{ next }}">#}
+
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+            type="submit">Log in</button>
+</form>
+
+<br>
+
+{% load static %}
+<div class="alt_login_div">
+    <a id="github_link" href="{% url 'social:begin' 'github' %}" style="padding-right: 30px">
+        <img class="link_image" src="{% static 'images/github_logo_small.jpg' %}" alt="GitHub Logo">
+    </a>
+
+    <a id="twitter_link" href="{% url 'social:begin' 'twitter' %}">
+        <img class="link_image" src="{% static 'images/twitter_logo_small.jpg' %}" alt="Twitter Logo">
+    </a>
+</div>

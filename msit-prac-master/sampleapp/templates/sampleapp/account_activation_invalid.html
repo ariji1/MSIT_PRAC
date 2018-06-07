@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+    Activation link sent || Ting
+{% endblock %}
+
+{% block content %}
+    <div class="box_div">
+        <h3 class="box_div">Um...</h3>
+        <hr>
+
+        <p>Something went wrong with your activation link.
+            Please click <a href="{% url 'sampleapp:signup' %}">here</a> to sign up again.
+        </p>
+    </div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+Chat || Ting
+{% endblock %}
+
+{% block content %}
+
+    <div class="chat_page_div">
+        <!-- <div class="side_by_side"> -->
+            <!-- <div class="custom_col"> -->
+{#                Piano placeholder#}
+                <div class = "mdl-grid" style="margin:0%;">
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <div id="piano">
+                            <div id="white"></div>
+                            <div id="black"></div>
+                            <div id="audio" onerror="location.reload()"></div>
+                        </div>
+                        <div id='win' class="mdl-cell mdl-cell--8-col"></div>
+                    </div>
+                <!-- </div> -->
+            <!-- </div> -->
+
+                    <div class="chat_box_div mdl-cell mdl-cell--6-col">
+                        <div id="chat-members">
+                            <h6>Chatting with {{ chatting_with }}</h6>
+                        </div>
+
+                        <div id="chat-history">
+                            {% for msg in msgs %}
+                                <div class="one_message {% if msg.sender.username == username %}
+                            sent {% else %} received
+                                {% endif %}">
+                                    <p class="sender_name">{{ msg.sender.first_name }} {{ msg.sender.last_name }} {{ msg.timestamp|date:"Y-m-d H:i:s" }}</p>
+                                    <hr>
+                                    <p class="msg_text">{{ msg.message }}</p>
+                                </div>
+
+                            {% endfor %}
+
+                        </div>
+
+                        <div id="chat-box">
+                            <input id="current_room_label" type="hidden" value="{{ room.label }}">
+                            <input id="sender" type="hidden" value="{{ username }}">
+
+        {#                    <input id="chat-message-input" type="text" placeholder="Message..."/>#}
+        {#                    <button id="chat-message-submit"#}
+        {#                            class="mdl-button mdl-js-button#}
+        {#                                    mdl-button--raised mdl-js-ripple-effect#}
+        {#                                    mdl-button--accent"#}
+        {#                            type="submit">Send</button>#}
+
+                        </div>
+                    </div>
+                </div>
+        <!-- </div> -->
+    </div>
+{% endblock %}
+
+{% block custom_js %}
+    {% load static %}
+    <script>
+        let roomName = '{{ room.label }}',
+            currentUsername = '{{ username }}';
+    </script>
+    <script type="text/javascript" src="{% static 'js/reconnecting-websocket.min.js' %}"></script>
+    <script>
+        let notesDirectory = '{% static "notes" %}';
+    </script>
+    <script type="text/javascript" src="{% static 'js/arm.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/piano.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/notes.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/translators/translator.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/translators/retranslator.js' %}"></script>
+    <script async type="text/javascript" src="{% static 'js/keyboard.js' %}"></script>
+    <script async type="text/javascript" src="{% static 'js/DOM/window_fnc.js' %}"></script>
+    <script async type="text/javascript" src="{% static 'js/DOM/index.js' %}"></script>
+    <script async type="text/javascript" src="{% static 'js/DOM/window_dom.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/chat.js' %}"></script>
+{% endblock %}

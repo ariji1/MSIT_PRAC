@@ -1,0 +1,9 @@
+{% autoescape off %}
+Hi {{ user.username }},
+
+Welcome to Ting!
+
+Please click the link below to confirm your registration:
+
+http://{{ domain }}{% url 'sampleapp:activate' uidb64=uid token=token %}
+{% endautoescape %}

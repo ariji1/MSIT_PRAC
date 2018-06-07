@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+Error || Ting
+{% endblock %}
+
+{% block content %}
+    <div class="box_div">
+        <h3 class="page_heading">Um...</h3>
+        <hr>
+
+        <p class="piece_heading">Something went wrong. We're working on it.
+            But we got you a pretty picture to make up for it. :)</p>
+        <br>
+
+        {% load static %}
+        <img src="{% static 'images/wrong_small.png' %}" alt="Something went wrong.">
+    </div>
+{% endblock %}

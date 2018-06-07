@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block head_title %}{% endblock head_title %}</title>
+    {% include "snippets/css.html" %}
+</head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header main_bar">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title bar_title"
+                      onclick="window.location='{% url 'sampleapp:index' %}'">
+                    Ting!
+                </span>
+            </div>
+
+            {% block tab_bar %}{% endblock %}
+        </header>
+
+        <div class = "mdl-layout__drawer">
+            <span class="mdl-layout-title bar_title"
+                  onclick="window.location='{% url 'sampleapp:index' %}'">
+                Ting!
+            </span>
+
+            <nav class = "mdl-navigation">
+                <div class="about_link_class mdl-navigation__link">
+                    <a class="about_link_tag some_link" href="{% url 'sampleapp:about' %}">About</a>
+                </div>
+
+                {% if user.is_authenticated %}
+                        <div class="logout_link_class mdl-navigation__link">
+                            <a class="logout_link_tag some_link" href="{% url 'sampleapp:logout' %}">Logout</a>
+                        </div>
+                {% endif %}
+
+                {% block navigation %}{% endblock %}
+
+            </nav>
+        </div>
+
+        {% block content %}{% endblock content %}
+    </div>
+
+    {% include "snippets/js.html" %}
+    {% block custom_js %}{% endblock %}
+    {% if user.is_authenticated %}
+        {% load static %}
+        <script>
+            let firstname = "{{ user.first_name }}",
+                lastname = "{{ user.last_name }}";
+        </script>
+    {% endif %}
+    <script type="text/javascript" src="{% static "js/appbar.js" %}"></script>
+
+</body>
+</html>
