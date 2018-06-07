@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+button {
+    cursor: pointer;
+}
+
+.main_bar {
+    background-color: cornflowerblue;
+    color: whitesmoke;
+    font-family: Montserrat, sans-serif;
+    margin-bottom: 1%;
+}
+
+.some_link {
+    font-size: large;
+}
+
+.sign_in_div {
+    border-left: 1px solid black;
+}
+
+.index_part {
+    text-align: center;
+    display: inline-block;
+}
+
+.box_div {
+    margin-left: 15%;
+    margin-right: 15%;
+    font-family: Raleway, sans-serif;
+}
+
+.bold_here {
+    font-weight: bold;
+}
+
+.bar_title {
+    cursor: pointer;
+    display: inline-block;
+    font-family: Montserrat, sans-serif;
+    font-size: xx-large;
+}
+
+.bar_title_text {
+    display: inline-block;
+}
+
+.form_table {
+    border-spacing: 12px;
+}
+
+.page_heading {
+    text-align: end;
+    font-family: Montserrat, sans-serif;
+}
+
+.piece_heading {
+    text-align: center;
+    font-family: Montserrat, sans-serif;
+}
+
+.link_image {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.title_image {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+}
+
+.error {
+    border: 1px solid red;
+    color: red;
+    display: inline-block;
+    padding: 1.5%;
+}
+
+.side_by_side {
+    display: flex;
+}
+
+.custom_col {
+    flex: 50%;
+    padding: 1%;
+}
+
+.left {
+    border-right: 1px solid gray;
+}
+
+.profile_pic {
+    padding-right: 0.5%;
+}
+
+.online_user_card {
+    padding: 1%;
+}
+
+.chat_page_div {
+    margin-left: 10%;
+    margin-right: 10%;
+    font-family: Raleway, sans-serif;
+}
+
+.chat_box_div {
+    font-family: Raleway, sans-serif;
+}
+
+#chat-history {
+    border: 1px solid black;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+#chat-members {
+    font-family: Montserrat, sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#chat-box {
+    margin: 1%;
+    margin-top: 1.2%;
+}
+
+#chat-message-input {
+    line-height: 190%;
+    width: 80%;
+    margin: 1%;
+}
+
+.one_message {
+    margin: 1.5%;
+    padding: 1%;
+    max-width: 75%;
+    clear: both;
+    border: 1px solid;
+    border-radius: 10%;
+    overflow-wrap: break-word;
+}
+
+.one_message .msg_text {
+    font-size: large;
+}
+
+.one_message .sender_name, .msg_time {
+    text-align: center;
+}
+
+.sent {
+    float: right;
+    background-color: #b5e7a0;
+}
+
+.received {
+    float: left;
+    background-color: cornflowerblue;
+}
+
+.msg_text {
+    cursor: pointer;
+}
