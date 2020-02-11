@@ -14,7 +14,7 @@ constantly==15.1.0
 daphne==2.1.2
 defusedxml==0.5.0
 dj-database-url==0.5.0
-Django==2.0.3
+Django==2.2.10
 docker-pycreds==0.2.3
 Flask==0.12.2
 gunicorn==19.8.1
